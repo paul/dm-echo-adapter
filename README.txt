@@ -10,7 +10,7 @@ dm-echo-adapter
     DataMapper.setup(:echo,
       :adapter => 'echo',
       :io => STDERR,
-      :wrap => { :adapter => 'in_memory' }
+      :echo => { :adapter => 'in_memory' }
     )
 
 
