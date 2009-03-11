@@ -1,8 +1,12 @@
 dm-echo-adapter
-    by Paul Sadauskas
-    http://github.com/paul/dm-echo-adapter
+===============
 
-== DESCRIPTION:
+by Paul Sadauskas
+
+http://github.com/paul/dm-echo-adapter
+
+DESCRIPTION
+-----------
 
   This adapter wraps any other adapter, and prints to an IO object (default 
   STDOUT) the method name, arguments, and return values. Useful for debugging.
@@ -14,19 +18,22 @@ dm-echo-adapter
     )
 
 
-== REQUIREMENTS:
+REQUIREMENTS
+------------
 
-  dm-core
+ * dm-core
 
-== INSTALL:
+INSTALL
+-------
 
-sudo gem install dm-echo-adapter
+    sudo gem install dm-echo-adapter
 
-== LICENSE:
+LICENSE
+-------
 
 (The MIT License)
 
-Copyright (c) 2008 FIXME (different license?)
+Copyright (c) 2008
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
