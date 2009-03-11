@@ -1,6 +1,12 @@
 
 require 'dm-core'
 
+begin 
+  require 'wirble'
+rescue LoadError
+  puts "install wirble gem for colorized output"
+end
+
 module DataMapper::Adapters
 class EchoAdapter
 
@@ -16,16 +22,32 @@ class EchoAdapter
     @io = options[:io] || STDOUT
 
     @adapter = DataMapper.setup("wrapped_#{name}".intern, options[:echo])
+
+    begin 
+      require 'wirble'
+      @colorize = true
+    rescue LoadError
+      puts "install wirble gem for colorized output"
+    end
+
   end
 
   def echo(method, args = {}, &block)
     @io.puts("##{method}")
     args.each do |name, value|
-      @io.puts("#{name}: #{value.inspect}")
+      @io.puts("#{name}: #{color_inspect value}")
     end
     result = yield
-    @io.puts(" # => #{result.inspect}\n\n")
+    @io.puts(" # => #{color_inspect result}\n\n")
     result
+  end
+
+  def color_inspect(obj)
+    if @colorize
+      printf Wirble::Colorize.colorize(obj.inspect)
+    else
+      obj.inspect
+    end
   end
 
   def create(resources)
